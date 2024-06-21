@@ -14,4 +14,11 @@ public class BookDTO {
     private int price;
     private String author;
     private int page;
+
+    public BookDTO(String title, int price, String author, int page) {
+        this.title = title;
+        this.price = price;
+        this.author = author;
+        this.page = page;
+    }
 }

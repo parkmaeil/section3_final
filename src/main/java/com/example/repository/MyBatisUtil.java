@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import java.io.InputStream;
 
 public class MyBatisUtil {
+    // SqlSessionFactoryBuilder - Connection Pool--> SqlSessionFactory
     private static SqlSessionFactory sqlSessionFactory; // SqlSession
     static {
         try {

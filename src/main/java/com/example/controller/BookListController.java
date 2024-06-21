@@ -20,13 +20,13 @@ public class BookListController extends HttpServlet { // POJO
         //Model과연동하는 부분
         BookDAOMyBatis dao=new BookDAOMyBatis();
 
-        List<BookDTO> list=dao.bookList();
+        List<BookDTO> list=dao.bookList(); // Gson API
        // 객체 바인딩 기술
         req.setAttribute("list", list); // ${list}
 
         // forward, dispatcher
        RequestDispatcher rd=req.getRequestDispatcher("/WEB-INF/views/list.jsp");
        rd.forward(req, resp); //-------------------------------------------| ${list}
-
+       // JSON Array -> [ {      }, {      }, {      }  ] -------> 응답
     }
 }

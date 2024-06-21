@@ -13,6 +13,13 @@ pageEncoding="UTF-8"%>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+         function goDel(num){ // 1
+           let tdNum=document.getElementById("num"+num).innerHTML;
+           //alert(tdNum); // ?
+           location.href="/s3_f/delete?num="+tdNum;
+         }
+  </script>
 </head>
 <body>
 
@@ -29,16 +36,18 @@ pageEncoding="UTF-8"%>
                      <th>가격</th>
                      <th>저자</th>
                      <th>페이지수</th>
+                     <th>삭제</th>
                   </tr>
               </thead>
               <tbody>
               <c:forEach var="book" items="${list}">
                                   <tr>
-                                       <td>${book.num}</td>
+                                       <td id="num${book.num}">${book.num}</td>
                                        <td>${book.title}</td>
                                        <td>${book.price}</td>
                                        <td>${book.author}</td>
                                        <td>${book.page}</td>
+                                       <td><button  class="btn btn-sm btn-warning" onclick="goDel(${book.num})">삭제</button></td>
                                     </tr>
               </c:forEach>
               </tbody>
