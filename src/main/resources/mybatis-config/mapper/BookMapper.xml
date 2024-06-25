@@ -16,5 +16,17 @@
           insert into book(title, price, author, page)
           values(#{title},#{price},#{author},#{page})
      </insert>
+     
+     <select id="bootDetail" resultType="com.example.entity.BookDTO">
+         select * from book where num=#{reqNum}
+     </select>
 
+    <update id="bookUpdate" parameterType="com.example.entity.BookDTO">
+         update book set
+        title=#{title},
+        price=#{price},
+        author=#{author},
+        page=#{page}
+        where num=#{num}
+    </update>
 </mapper>

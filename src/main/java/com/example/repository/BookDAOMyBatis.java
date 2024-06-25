@@ -29,5 +29,22 @@ public class BookDAOMyBatis { // 리팩토링 => 중앙집중식 관리, 코드�
                return cnt;
            }
        }
+      //  상세보기
+    public BookDTO bootDetail(int reqNum){
+            try(SqlSession session=MyBatisUtil.openSession()){ // close()
+                // BookDTO dto=session.selectOne("bootDetail",reqNum); // BookDTO
+                return session.selectOne("bootDetail",reqNum); // SqlSession->bootDetail->Mapper.xml
+            }
+    }
+    // 수정하기 : 수정할 데이터(num , DTO)
+    public int bookUpdate(int reqNum, BookDTO dto){
+        try(SqlSession session=MyBatisUtil.openSession()){ // close()
+            dto.setNum(reqNum); // ?
+            // Map<Key, Value>
+            int cnt=session.update("bookUpdate", dto);
+            session.commit();// 완료
+            return cnt;
+        }
+    }
 
 }
